@@ -29,48 +29,71 @@ namespace GuessNumber
             string input = Console.ReadLine();
             Console.WriteLine("Hello {0}, let's play a game...", input);
 
-            // Init correct number and the guess variable:
-            //int correctnumber = 7;
-            // Create a rondom object: 
-            Random random = new Random();
-            int correctnumber = random.Next(1, 10);
-            int guessNumber = 0;
 
-            Console.WriteLine("Guess a number between 1 and 10");
-
-            // while loop for checking the number: 
-            while (guessNumber != correctnumber)
+            while (true)
             {
-                // Get users input:
-                string inputNumber = Console.ReadLine();
+                // Init correct number and the guess variable:
+                //int correctnumber = 7;
+                // Create a rondom object: 
+                Random random = new Random();
+                int correctnumber = random.Next(1, 10);
+                int guessNumber = 0;
 
-                //check if the input is a number
-                if (!int.TryParse(inputNumber, out guessNumber)) {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("It looks like the input wasn't a number, please try again!");
-                    Console.ResetColor();
+                Console.WriteLine("Guess a number between 1 and 10");
 
-                    //Keep going:
+                // while loop for checking the number: 
+                while (guessNumber != correctnumber)
+                {
+                    // Get users input:
+                    string inputNumber = Console.ReadLine();
+
+                    //check if the input is a number
+                    if (!int.TryParse(inputNumber, out guessNumber))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("It looks like the input wasn't a number, please try again!");
+                        Console.ResetColor();
+
+                        //Keep going:
+                        continue;
+                    }
+
+                    // Cast to int and put in guess variable
+                    guessNumber = Int32.Parse(inputNumber);
+
+                    // Match guess to correct number 
+                    if (guessNumber != correctnumber)
+                    {
+                        // Change text color 
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        // Write out app info
+                        Console.WriteLine("Wrong number, please try again");
+                        // Reset text color
+                        Console.ResetColor();
+
+                    }
+                }
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Congradulations, you have guessed the correct number!");
+                Console.ResetColor();
+
+                // Ask the user to play again? 
+                Console.WriteLine("Play Again?  [Y or N]");
+
+                string answer = Console.ReadLine().ToUpper();
+
+                if (answer == "Y") {
                     continue;
                 }
-
-                // Cast to int and put in guess variable
-                guessNumber = Int32.Parse(inputNumber);
-
-                // Match guess to correct number 
-                if (guessNumber != correctnumber)
-                {
-                    // Change text color 
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    // Write out app info
-                    Console.WriteLine("Wrong number, please try again");
-                    // Reset text color
-                    Console.ResetColor();
-
+                else if (answer == "N") {
+                    return;
                 }
-            }
-            Console.WriteLine("Congradulations, you have guessed the correct number!");
+                else 
+                {
+                    return; 
+                }
 
+            }
         }
     }
 }
