@@ -30,7 +30,10 @@ namespace GuessNumber
             Console.WriteLine("Hello {0}, let's play a game...", input);
 
             // Init correct number and the guess variable:
-            int correctnumber = 7;
+            //int correctnumber = 7;
+            // Create a rondom object: 
+            Random random = new Random();
+            int correctnumber = random.Next(1, 10);
             int guessNumber = 0;
 
             Console.WriteLine("Guess a number between 1 and 10");
@@ -41,6 +44,16 @@ namespace GuessNumber
                 // Get users input:
                 string inputNumber = Console.ReadLine();
 
+                //check if the input is a number
+                if (!int.TryParse(inputNumber, out guessNumber)) {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("It looks like the input wasn't a number, please try again!");
+                    Console.ResetColor();
+
+                    //Keep going:
+                    continue;
+                }
+
                 // Cast to int and put in guess variable
                 guessNumber = Int32.Parse(inputNumber);
 
@@ -49,10 +62,8 @@ namespace GuessNumber
                 {
                     // Change text color 
                     Console.ForegroundColor = ConsoleColor.Red;
-
                     // Write out app info
                     Console.WriteLine("Wrong number, please try again");
-
                     // Reset text color
                     Console.ResetColor();
 
