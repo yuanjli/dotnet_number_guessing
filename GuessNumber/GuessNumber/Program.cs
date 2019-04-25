@@ -9,22 +9,11 @@ namespace GuessNumber
         // Entry Point Method
         static void Main(string[] args)
         {
-            // Set app vars
-            string appName = "Number Guesser";
-            string appVersion = "1.0.0";
-
-            // Change text color 
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
-
-            // Write out app info
-            Console.WriteLine("{0}: Version {1}", appName, appVersion);
-
-            // Reset text color
-            Console.ResetColor();
+            
+            GetAppInfo();  // runs this function.
 
             // Ask user's name
             Console.WriteLine("What is your name?");
-
             // Get user name input:
             string input = Console.ReadLine();
             Console.WriteLine("Hello {0}, let's play a game...", input);
@@ -94,6 +83,20 @@ namespace GuessNumber
                 }
 
             }
+        }
+
+        static void GetAppInfo(){
+            // Set app vars
+            string appName = "Number Guesser";
+            string appVersion = "1.0.0";
+
+            // Change text color 
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            // Write out app info
+            Console.WriteLine("{0}: Version {1}", appName, appVersion);
+            // Reset text color
+            Console.ResetColor();
+
         }
     }
 }
