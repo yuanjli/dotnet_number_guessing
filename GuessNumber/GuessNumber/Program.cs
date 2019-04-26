@@ -9,15 +9,10 @@ namespace GuessNumber
         // Entry Point Method
         static void Main(string[] args)
         {
-            
-            GetAppInfo();  // runs this function.
-
-            // Ask user's name
-            Console.WriteLine("What is your name?");
-            // Get user name input:
-            string input = Console.ReadLine();
-            Console.WriteLine("Hello {0}, let's play a game...", input);
-
+            // Runs the function to print out the app information:
+            GetAppInfo();
+            // Runs the function to engage the user:
+            Greeting();
 
             while (true)
             {
@@ -71,32 +66,43 @@ namespace GuessNumber
 
                 string answer = Console.ReadLine().ToUpper();
 
-                if (answer == "Y") {
+                if (answer == "Y")
+                {
                     continue;
                 }
-                else if (answer == "N") {
+                else if (answer == "N")
+                {
                     return;
                 }
-                else 
+                else
                 {
-                    return; 
+                    return;
                 }
 
             }
         }
 
-        static void GetAppInfo(){
+        static void GetAppInfo()
+        {
             // Set app vars
             string appName = "Number Guesser";
             string appVersion = "1.0.0";
-
             // Change text color 
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             // Write out app info
             Console.WriteLine("{0}: Version {1}", appName, appVersion);
             // Reset text color
             Console.ResetColor();
+        }
 
+        static void Greeting()
+        {
+            // Ask user's name
+            Console.WriteLine("What is your name?");
+            // Get user name input:
+            string input = Console.ReadLine();
+            // Greetings: 
+            Console.WriteLine("Hello {0}, let's play a game...", input);
         }
     }
 }
