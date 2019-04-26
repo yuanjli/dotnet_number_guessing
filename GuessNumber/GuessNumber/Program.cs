@@ -34,32 +34,21 @@ namespace GuessNumber
                     //check if the input is a number
                     if (!int.TryParse(inputNumber, out guessNumber))
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("It looks like the input wasn't a number, please try again!");
-                        Console.ResetColor();
-
-                        //Keep going:
+                        // Print error message:
+                        PrintMessage(ConsoleColor.Red, "It looks like the input wasn't a number, please try again!");
+                        // Keep going:
                         continue;
                     }
-
+ 
                     // Cast to int and put in guess variable
                     guessNumber = Int32.Parse(inputNumber);
-
                     // Match guess to correct number 
                     if (guessNumber != correctnumber)
                     {
-                        // Change text color 
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        // Write out app info
-                        Console.WriteLine("Wrong number, please try again");
-                        // Reset text color
-                        Console.ResetColor();
-
+                        PrintMessage(ConsoleColor.Red, "Wrong number, please try again!");
                     }
                 }
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("Congradulations, you have guessed the correct number!");
-                Console.ResetColor();
+                PrintMessage(ConsoleColor.Yellow, "Congradulations, you have guessed the correct number!!");
 
                 // Ask the user to play again? 
                 Console.WriteLine("Play Again?  [Y or N]");
@@ -78,7 +67,6 @@ namespace GuessNumber
                 {
                     return;
                 }
-
             }
         }
 
@@ -95,6 +83,7 @@ namespace GuessNumber
             Console.ResetColor();
         }
 
+        // This function asks user's name and prints out greeting message:
         static void Greeting()
         {
             // Ask user's name
@@ -104,5 +93,13 @@ namespace GuessNumber
             // Greetings: 
             Console.WriteLine("Hello {0}, let's play a game...", input);
         }
+
+        // This function prints out the message in this color:
+        static void PrintMessage(ConsoleColor color, string message){
+            Console.ForegroundColor = color;
+            Console.WriteLine(message);
+            Console.ResetColor();
+        }
+
     }
 }
